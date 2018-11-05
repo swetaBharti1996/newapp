@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const user = require('./routes/user.routes');
 const app = express();
 
 app.use(bodyParser.json());
@@ -15,4 +16,6 @@ mongoose.connect(dev_db_url)
 .catch((err) => {
     console.log('failed to connect to mongodb', err);
 });
+
+app.use('/user',user);
 app.listen(3030, () => console.log(`Example app listening on port ${3030}!`));
